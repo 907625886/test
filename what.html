@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>What</title>
+
+    <style>
+
+        #cs {
+            background: conic-gradient(deeppink 0 20%, yellowgreen 0 10%);
+            
+
+
+        }
+
+        @media screen and (max-width: 1920px) {
+            #cs {
+                background-color: red;
+            }
+
+            body {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 1200px) {
+            #cs {
+                background-color: tan;
+            }
+
+            body {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            #cs {
+                background-color: teal;
+            }
+
+            body {
+                font-size: 12px;
+            }
+        }
+        #cs:hover>div{
+background-color: aqua;
+        
+        }
+        div
+{
+
+
+background-color:yellow;
+background-clip:text;
+border:2px solid #92b901;
+}
+#se{
+    width: 200px;
+    height: 200px;
+    
+    background-image: url(./Koala.jpg); background-color: rgb(0, 255, 76); background-blend-mode: multiply;
+
+background-size:cover;
+}
+
+    </style>
+
+
+</head>
+
+<body class='specialFont' id='ss' >
+    
+
+<input id="file" type="file" οnchange="fileChange" />
+进度：<span id="progress"></span>
+<div id="box">
+
+</div>
+
+
+    <div style="background: red; padding: 150px;"></div>
+    <form action="" method="get" style="margin:100px auto;width:700px;position: sticky;top:10px;">
+      
+        搜索:<input type="text" style="width:600px;height: 50px;border: 2px solid pink;opacity: .6;"/>
+    </form>
+    <div style="width:1rem; height: 1rem;background-color: pink;position:fixed; top:60px" class='dd'>aa1111111</div>
+    <div style="width:192px;  font-size: 200px; height: 192px;background: url(./Koala.jpg);background-color: pink; -webkit-background-clip: text;color: transparent;">6453453</div>
+    <div style="width:1rem; height: 1rem;background-color: pink;" >cv</div>
+    <div style="width: 400px;height: 400px;  position: relative;border-radius: 50%;" id='cs'>
+        <div
+            style="width: 300px;height: 300px;background-color: gray;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);border-radius: 50%;">
+cvxvcxvx
+        </div>
+    </div>
+    <div id='se'>cvxv</div>
+    <script src="./flexible.js"></script>
+    <script>
+//获取页面元素对象
+var file = document.getElementById('file');
+var output = document.getElementById('box');
+var progress = document.getElementById('progress');
+//onchange事件
+file.onchange = function (e) {
+    console.log(e);
+    var files = e.target.files;
+    var file0 = files[0];
+    console.log(file0.size,file0.name,file0.type);
+    //fileReader对象
+    var fileReader = new FileReader();
+    var type = 'default';
+    //判断文件类型
+    if(/image/.test(file0.type)){
+        fileReader.readAsDataURL(file0);
+        type = 'image';
+    } else {
+        fileReader.readAsText(file0,'utf-8');
+        type = 'text';
+    }
+    //文件加载出错
+    fileReader.onerror = function () {
+        output.innerHTML = 'Could not read file, error code is ' + fileReader.error.code;
+    };
+    //加载成功后
+   fileReader.onload = function (e) {
+        console.log('onload')
+        var html = '';
+        switch (type) {
+            case 'image':
+               html = '<img src=\"' + this.result +'\">';
+               break;
+            case 'text':
+                html = fileReader.result;
+                break;
+        }
+        output.innerHTML = html;
+    };
+    //进度条进度
+    fileReader.onprogress = function (event) {
+        if(event.lengthComputable) {
+            progress.innerHTML = event.loaded + '/' + event.total;
+        }
+    }
+}
+
+
+
+        window.addEventListener("scroll", function() {
+var btop = document.body.scrollTop || document.documentElement.scrollTop;
+console.log(btop);
+console.log(btop);
+
+})
+
+        console.dir(document.querySelector('input'))
+        class Person {
+            constructor(name) {
+                this.name = name;
+            }
+            aa(){
+            alert("preson")
+            }
+        }
+        class Student extends Person {
+            constructor(name, studentId) {
+                super(name)
+                this.studentId = studentId
+            }
+            aa(x){
+
+                alert('srudent'+x)
+            }
+        };
+        let st = new Student('sss',1);
+       st.aa();
+        console.log(st.name+""+st.studentId)
+        function factorial(n){
+  if(n === 1) return 1;
+  return n* factorial(n-1);
+}
+
+
+    </script>
+</body>
+
+</html>
